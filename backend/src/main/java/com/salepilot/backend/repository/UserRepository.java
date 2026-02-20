@@ -68,4 +68,14 @@ public interface UserRepository extends JpaRepository<User, Long> {
             "LOWER(u.email) LIKE LOWER(CONCAT('%', :search, '%')) OR " +
             "LOWER(u.username) LIKE LOWER(CONCAT('%', :search, '%')))")
     Page<User> searchUsers(@Param("search") String search, Pageable pageable);
+
+    /**
+     * Find user by verification token
+     */
+    Optional<User> findByVerificationToken(String verificationToken);
+
+    /**
+     * Find user by reset password token
+     */
+    Optional<User> findByResetPasswordToken(String resetPasswordToken);
 }

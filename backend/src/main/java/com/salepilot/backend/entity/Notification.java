@@ -3,8 +3,6 @@ package com.salepilot.backend.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.Instant;
-
 /**
  * Tenant-scoped user notification.
  */
@@ -41,16 +39,6 @@ public class Notification extends TenantAware {
 
     @Column(name = "link")
     private String link; // Optional UI link
-
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private Instant createdAt;
-
-    @PrePersist
-    protected void onCreate() {
-        if (createdAt == null) {
-            createdAt = Instant.now();
-        }
-    }
 
     public enum NotificationType {
         INFO,

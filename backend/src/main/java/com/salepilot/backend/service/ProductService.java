@@ -85,6 +85,15 @@ public class ProductService {
     }
 
     /**
+     * Get all products for current tenant
+     */
+    @Transactional(readOnly = true)
+    public Page<Product> getAllProducts(Pageable pageable) {
+        String storeId = TenantContext.getCurrentTenant();
+        return productRepository.findByStoreId(storeId, pageable);
+    }
+
+    /**
      * Get low stock products
      */
     @Transactional(readOnly = true)

@@ -20,7 +20,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: none
     show-sql: false
     properties:
       hibernate:
@@ -44,17 +44,33 @@ spring:
     caffeine:
       spec: maximumSize=500,expireAfterWrite=10m
 
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: ${OAUTH2_ISSUER_URI:}
-          jwk-set-uri: ${OAUTH2_JWK_SET_URI:}
+  mail:
+    host: ${SMTP_HOST:smtp.gmail.com}
+    port: ${SMTP_PORT:587}
+    username: ${SMTP_USERNAME:}
+    password: ${SMTP_PASSWORD:}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+
+#  security:
+#    oauth2:
+#      resourceserver:
+#        jwt:
+#          issuer-uri: ${OAUTH2_ISSUER_URI:}
+#          jwk-set-uri: ${OAUTH2_JWK_SET_URI:}
 
 server:
   port: ${SERVER_PORT:8080}
   servlet:
-    context-path: /api
+    # context-path: /api
   compression:
     enabled: true
     mime-types: application/json,application/xml,text/html,text/xml,text/plain
@@ -67,18 +83,18 @@ server:
 # Application specific configuration
 app:
   name: SalePilot Backend
-  version: @project.version@
+  version: "@project.version@"
   api:
     version: v1
     base-path: /api/v1
   
   jwt:
-    secret: ${JWT_SECRET:your-256-bit-secret-your-256-bit-secret-your-256-bit-secret}
+    secret: "${JWT_SECRET:your-256-bit-secret-your-256-bit-secret-your-256-bit-secret}"
     expiration: ${JWT_EXPIRATION:86400000} # 24 hours in milliseconds
     refresh-expiration: ${JWT_REFRESH_EXPIRATION:604800000} # 7 days
   
   cors:
-    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:3000,http://localhost:5173}
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:3000,http://localhost:5173,http://localhost,https://localhost,capacitor://localhost}
     allowed-methods: GET,POST,PUT,DELETE,PATCH,OPTIONS
     allowed-headers: "*"
     allow-credentials: true
@@ -88,6 +104,34 @@ app:
     rate-limit:
       enabled: true
       requests-per-second: 100
+  
+  # AI Integration (Google Gemini)
+  ai:
+    google-api-key: ${GOOGLE_API_KEY:}
+    model: ${AI_MODEL:gemini-2.0-flash-exp}
+    temperature: 0.7
+    max-tokens: 500
+  
+  # Email Configuration
+  email:
+    enabled: ${EMAIL_ENABLED:true}
+    from: ${EMAIL_FROM:noreply@salepilot.com}
+    from-name: SalePilot
+    verification:
+      base-url: ${FRONTEND_URL:http://localhost:5173}
+  
+  # File Storage
+  storage:
+    type: ${STORAGE_TYPE:local} # local or firebase
+    upload-dir: ${UPLOAD_DIR:./uploads}
+    max-file-size: 52428800 # 50MB in bytes
+    allowed-extensions: jpg,jpeg,png,gif,pdf,doc,docx
+  
+  # Firebase Configuration
+  firebase:
+    enabled: ${FIREBASE_ENABLED:false}
+    credentials-path: ${FIREBASE_CREDENTIALS_PATH:}
+    storage-bucket: ${FIREBASE_STORAGE_BUCKET:}
 
 # Actuator Configuration
 management:
@@ -124,7 +168,7 @@ logging:
 # SpringDoc OpenAPI Configuration
 springdoc:
   api-docs:
-    path: /api-docs
+    # path: /api-docs
     enabled: true
   swagger-ui:
     path: /swagger-ui.html

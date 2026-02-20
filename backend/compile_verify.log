@@ -1,0 +1,66 @@
+﻿
+> Task :compileJava
+./gradlew : C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java
+\com\salepilot\backend\config\SecurityConfig.java:103: error: constructor 
+DaoAuthenticationProvider in class DaoAuthenticationProvider cannot be applied 
+to given types;
+At line:1 char:1
++ ./gradlew compileJava 2>&1 | Out-File -Encoding utf8 compile_verify.l ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:\Users\omen\D...to given 
+types;:St    ring) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+        
+org.springframework.security.authentication.dao.DaoAuthenticationProvider 
+provider = new 
+org.springframework.security.authentication.dao.DaoAuthenticationProvider();
+                                                                                
+             ^
+  required: UserDetailsService
+  found:    no arguments
+  reason: actual and formal argument lists differ in length
+C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java\com\salepil
+ot\backend\config\SecurityConfig.java:104: error: cannot find symbol
+        provider.setUserDetailsService(userDetailsService);
+                ^
+  symbol:   method setUserDetailsService(UserDetailsService)
+  location: variable provider of type DaoAuthenticationProvider
+2 errors
+
+> Task :compileJava FAILED
+
+[Incubating] Problems report is available at: file:///C:/Users/omen/Downloads/salepilot/java-backend/backend/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileJava'.
+> Compilation failed; see the compiler output below.
+  C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java\com\salep
+ilot\backend\config\SecurityConfig.java:103: error: constructor 
+DaoAuthenticationProvider in class DaoAuthenticationProvider cannot be applied 
+to given types;
+          
+org.springframework.security.authentication.dao.DaoAuthenticationProvider 
+provider = new 
+org.springframework.security.authentication.dao.DaoAuthenticationProvider();
+                                                                                
+               ^
+    required: UserDetailsService
+    found:    no arguments
+    reason: actual and formal argument lists differ in length
+  C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java\com\salep
+ilot\backend\config\SecurityConfig.java:104: error: cannot find symbol
+          provider.setUserDetailsService(userDetailsService);
+                  ^
+    symbol:   method setUserDetailsService(UserDetailsService)
+    location: variable provider of type DaoAuthenticationProvider
+  2 errors
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to generate a Build Scan (powered by Develocity).
+
+BUILD FAILED in 15s
+1 actionable task: 1 executed

@@ -1,0 +1,100 @@
+﻿#16 49.51   /app/src/main/java/com/salepilot/backend/config/SecurityConfig.java:103: error: constructor DaoAuthenticationProvider in class DaoAuthenticationProvider cannot be applied to given types;
+#16 49.51           DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+#16 49.51                                                ^
+#16 49.51     required: UserDetailsService
+#16 49.51     found:    no arguments
+#16 49.51     reason: actual and formal argument lists differ in length
+#16 49.51   /app/src/main/java/com/salepilot/backend/service/SubscriptionService.java:54: error: incompatible types: Instant cannot be converted to LocalDateTime
+#16 49.51           store.setSubscriptionEndsAt(Instant.now().plus(30, ChronoUnit.DAYS));
+#16 49.51                                                         ^
+#16 49.51   Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+#16 49.51   /app/src/main/java/com/salepilot/backend/config/SecurityConfig.java:104: error: cannot find symbol
+#16 49.51           provider.setUserDetailsService(userDetailsService);
+#16 49.51                   ^
+#16 49.51     symbol:   method setUserDetailsService(UserDetailsService)
+#16 49.51     location: variable provider of type DaoAuthenticationProvider
+#16 49.52   /app/src/main/java/com/salepilot/backend/service/CustomerService.java:44: error: cannot find symbol
+#16 49.52           if (customer.getStoreCredit() == null) {
+#16 49.52                       ^
+#16 49.52     symbol:   method getStoreCredit()
+#16 49.52     location: variable customer of type Customer
+#16 49.52   /app/src/main/java/com/salepilot/backend/service/CustomerService.java:45: error: cannot find symbol
+#16 49.52               customer.setStoreCredit(BigDecimal.ZERO);
+#16 49.52                       ^
+#16 49.52     symbol:   method setStoreCredit(BigDecimal)
+#16 49.52     location: variable customer of type Customer
+#16 49.52   /app/src/main/java/com/salepilot/backend/service/CustomerService.java:154: error: cannot find symbol
+#16 49.52           customer.setStoreCredit(customer.getStoreCredit().add(amount));
+#16 49.52                                           ^
+#16 49.52     symbol:   method getStoreCredit()
+#16 49.52     location: variable customer of type Customer
+#16 49.52   /app/src/main/java/com/salepilot/backend/service/CustomerService.java:177: error: cannot find symbol
+#16 49.52           if (customer.getStoreCredit().compareTo(amount) < 0) {
+#16 49.52                       ^
+#16 49.52     symbol:   method getStoreCredit()
+#16 49.52     location: variable customer of type Customer
+#16 49.52   /app/src/main/java/com/salepilot/backend/service/CustomerService.java:178: error: cannot find symbol
+#16 49.52               throw new IllegalArgumentException("Insufficient store credit. Available: " + customer.getStoreCredit());
+#16 49.52                                                                                                     ^
+#16 49.52     symbol:   method getStoreCredit()
+#16 49.52     location: variable customer of type Customer
+#16 49.52   /app/src/main/java/com/salepilot/backend/service/CustomerService.java:181: error: cannot find symbol
+#16 49.52           customer.setStoreCredit(customer.getStoreCredit().subtract(amount));
+#16 49.52                                           ^
+#16 49.52     symbol:   method getStoreCredit()
+#16 49.52     location: variable customer of type Customer
+#16 49.52   /app/src/main/java/com/salepilot/backend/service/CustomerService.java:226: error: cannot find symbol
+#16 49.52           if (customer.getStoreCredit().compareTo(BigDecimal.ZERO) > 0) {
+#16 49.52                       ^
+#16 49.52     symbol:   method getStoreCredit()
+#16 49.52     location: variable customer of type Customer
+#16 49.52   /app/src/main/java/com/salepilot/backend/service/CustomerService.java:228: error: cannot find symbol
+#16 49.52                       customer.getStoreCredit());
+#16 49.52                               ^
+#16 49.52     symbol:   method getStoreCredit()
+#16 49.52     location: variable customer of type Customer
+#16 49.52   /app/src/main/java/com/salepilot/backend/controller/CustomerController.java:150: error: cannot find symbol
+#16 49.52                   .storeCredit(customer.getStoreCredit())
+#16 49.52                                        ^
+#16 49.52     symbol:   method getStoreCredit()
+#16 49.52     location: variable customer of type Customer
+#16 49.52   12 errors
+#16 49.52 
+#16 49.52 * Try:
+#16 49.52 > Check your code and dependencies to fix the compilation error(s)
+#16 49.52 > Run with --scan to get full insights from a Build Scan (powered by Develocity).
+#16 49.52 
+#16 49.52 BUILD FAILED in 48s
+#16 49.52 1 actionable task: 1 executed
+#16 ERROR: process "/bin/sh -c gradle bootJar --no-daemon -x test" did not complete successfully: exit code: 1
+------
+ > [build 7/7] RUN gradle bootJar --no-daemon -x test:
+49.52     symbol:   method getStoreCredit()
+49.52     location: variable customer of type Customer
+49.52   12 errors
+49.52 
+49.52 * Try:
+49.52 > Check your code and dependencies to fix the compilation error(s)
+49.52 > Run with --scan to get full insights from a Build Scan (powered by Develocity).
+49.52 
+49.52 BUILD FAILED in 48s
+49.52 1 actionable task: 1 executed
+------
+Dockerfile:18
+
+--------------------
+
+  16 |     
+
+  17 |     # Build application
+
+  18 | >>> RUN gradle bootJar --no-daemon -x test
+
+  19 |     
+
+  20 |     # Stage 2: Runtime
+
+--------------------
+
+failed to solve: process "/bin/sh -c gradle bootJar --no-daemon -x test" did not complete successfully: exit code: 1
+

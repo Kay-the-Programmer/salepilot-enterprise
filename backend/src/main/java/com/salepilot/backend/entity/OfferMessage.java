@@ -3,8 +3,6 @@ package com.salepilot.backend.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.Instant;
-
 /**
  * Offer Message entity for chat/messaging within offers.
  */
@@ -35,11 +33,4 @@ public class OfferMessage extends BaseEntity {
     @Column(name = "image_url")
     private String imageUrl; // Optional image attachment
 
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private Instant createdAt;
-
-    @PrePersist
-    protected void onCreate() {
-        createdAt = Instant.now();
-    }
 }

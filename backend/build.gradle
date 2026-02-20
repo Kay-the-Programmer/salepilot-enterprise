@@ -40,8 +40,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-cache'
-	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
-	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	
 	// JWT Authentication
 	implementation "io.jsonwebtoken:jjwt-api:${jjwtVersion}"
@@ -70,6 +70,19 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+	
+	// Google Generative AI (Gemini) - Using WebClient implementation
+	// implementation 'com.google.ai.client.generativeai:google-generativeai:0.4.0'
+	
+	// Firebase Admin SDK for Push Notifications
+	implementation 'com.google.firebase:firebase-admin:9.2.0'
+	
+	// File Upload
+	implementation 'commons-fileupload:commons-fileupload:1.5'
+	implementation 'commons-io:commons-io:2.15.1'
+	
+	// HTTP Client for external APIs
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	
 	// Development Tools
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -124,4 +137,11 @@ jacocoTestCoverageVerification {
 // Spring Boot native build image configuration
 tasks.named('bootBuildImage') {
 	imageName = "salepilot/${project.name}:${project.version}"
+}
+
+tasks.named('processResources') {
+	duplicatesStrategy = DuplicatesStrategy.INCLUDE
+	filesMatching('application.yml') {
+		filter(org.apache.tools.ant.filters.ReplaceTokens, tokens: ['project.version': project.version.toString()])
+	}
 }

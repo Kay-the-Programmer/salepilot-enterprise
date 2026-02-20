@@ -1,0 +1,200 @@
+﻿#16 36.95   /app/src/main/java/com/salepilot/backend/service/ReturnService.java:54: error: cannot find symbol
+#16 36.95           if (request.getRefundAmount().compareTo(originalSale.getAmountPaid()) > 0) {
+#16 36.95                      ^
+#16 36.95     symbol:   method getRefundAmount()
+#16 36.95     location: variable request of type ReturnRequest
+#16 36.95   /app/src/main/java/com/salepilot/backend/service/ReturnService.java:54: error: cannot find symbol
+#16 36.95           if (request.getRefundAmount().compareTo(originalSale.getAmountPaid()) > 0) {
+#16 36.95                                                               ^
+#16 36.95     symbol:   method getAmountPaid()
+#16 36.95     location: variable originalSale of type Sale
+#16 36.95   /app/src/main/java/com/salepilot/backend/service/ReturnService.java:58: error: cannot find symbol
+#16 36.95           Return returnRecord = Return.builder()
+#16 36.95                                       ^
+#16 36.95     symbol:   method builder()
+#16 36.95     location: class Return
+#16 36.95   /app/src/main/java/com/salepilot/backend/service/ReturnService.java:62: error: cannot find symbol
+#16 36.95                   .refundAmount(request.getRefundAmount())
+#16 36.95                                        ^
+#16 36.95     symbol:   method getRefundAmount()
+#16 36.95     location: variable request of type ReturnRequest
+#16 36.95   /app/src/main/java/com/salepilot/backend/service/ReturnService.java:63: error: cannot find symbol
+#16 36.95                   .refundMethod(request.getRefundMethod())
+#16 36.95                                        ^
+#16 36.95     symbol:   method getRefundMethod()
+#16 36.95     location: variable request of type ReturnRequest
+#16 36.95   /app/src/main/java/com/salepilot/backend/service/ReturnService.java:69: error: cannot find symbol
+#16 36.95           for (ReturnRequest.ReturnItemRequest itemRequest : request.getItems()) {
+#16 36.95                                                                     ^
+#16 36.95     symbol:   method getItems()
+#16 36.95     location: variable request of type ReturnRequest
+#16 36.95   /app/src/main/java/com/salepilot/backend/service/ReturnService.java:70: error: cannot find symbol
+#16 36.95               Product product = productRepository.findById(itemRequest.getProductId())
+#16 36.95                                                                       ^
+#16 36.95     symbol:   method getProductId()
+#16 36.95     location: variable itemRequest of type ReturnItemRequest
+#16 36.95   /app/src/main/java/com/salepilot/backend/service/ReturnService.java:71: error: cannot find symbol
+#16 36.95                       .orElseThrow(() -> new NotFoundException("Product not found: " + itemRequest.getProductId()));
+#16 36.95                                                                                                   ^
+#16 36.95     symbol:   method getProductId()
+#16 36.95     location: variable itemRequest of type ReturnItemRequest
+#16 36.95   /app/src/main/java/com/salepilot/backend/service/ReturnService.java:78: error: cannot find symbol
+#16 36.95               ReturnItem item = ReturnItem.builder()
+#16 36.95                                           ^
+#16 36.95     symbol:   method builder()
+#16 36.95     location: class ReturnItem
+#16 36.95   /app/src/main/java/com/salepilot/backend/service/ReturnService.java:80: error: cannot find symbol
+#16 36.95                       .productName(product.getName())
+#16 36.95                                           ^
+#16 36.95     symbol:   method getName()
+#16 36.95     location: variable product of type Product
+#16 36.95   /app/src/main/java/com/salepilot/backend/service/ReturnService.java:81: error: cannot find symbol
+#16 36.95                       .quantity(itemRequest.getQuantity())
+#16 36.95                                            ^
+#16 36.95     symbol:   method getQuantity()
+#16 36.95     location: variable itemRequest of type ReturnItemRequest
+#16 36.95   /app/src/main/java/com/salepilot/backend/service/ReturnService.java:82: error: cannot find symbol
+#16 36.95                       .reason(itemRequest.getReason())
+#16 36.95                                          ^
+#16 36.95     symbol:   method getReason()
+#16 36.95     location: variable itemRequest of type ReturnItemRequest
+#16 36.95   /app/src/main/java/com/salepilot/backend/service/ReturnService.java:83: error: cannot find symbol
+#16 36.95                       .addToStock(itemRequest.isAddToStock())
+#16 36.95                                              ^
+#16 36.95     symbol:   method isAddToStock()
+#16 36.95     location: variable itemRequest of type ReturnItemRequest
+#16 36.95   /app/src/main/java/com/salepilot/backend/service/ReturnService.java:89: error: cannot find symbol
+#16 36.95               if (itemRequest.isAddToStock()) {
+#16 36.95                              ^
+#16 36.95     symbol:   method isAddToStock()
+#16 36.95     location: variable itemRequest of type ReturnItemRequest
+#16 36.95   /app/src/main/java/com/salepilot/backend/service/ReturnService.java:90: error: cannot find symbol
+#16 36.95                   product.setStock(product.getStock().add(itemRequest.getQuantity()));
+#16 36.95                                           ^
+#16 36.95     symbol:   method getStock()
+#16 36.95     location: variable product of type Product
+#16 36.95   /app/src/main/java/com/salepilot/backend/service/ReturnService.java:90: error: cannot find symbol
+#16 36.95                   product.setStock(product.getStock().add(itemRequest.getQuantity()));
+#16 36.95                                                                      ^
+#16 36.95     symbol:   method getQuantity()
+#16 36.95     location: variable itemRequest of type ReturnItemRequest
+#16 36.95   /app/src/main/java/com/salepilot/backend/service/ReturnService.java:98: error: cannot find symbol
+#16 36.95               item.setReturnRecord(savedReturn);
+#16 36.95                   ^
+#16 36.95     symbol:   method setReturnRecord(Return)
+#16 36.95     location: variable item of type ReturnItem
+#16 36.95   /app/src/main/java/com/salepilot/backend/service/ReturnService.java:104: error: cannot find symbol
+#16 36.95           if (request.getRefundAmount().compareTo(originalSale.getTotal()) >= 0) {
+#16 36.95                      ^
+#16 36.95     symbol:   method getRefundAmount()
+#16 36.95     location: variable request of type ReturnRequest
+#16 36.95   /app/src/main/java/com/salepilot/backend/service/ReturnService.java:104: error: cannot find symbol
+#16 36.95           if (request.getRefundAmount().compareTo(originalSale.getTotal()) >= 0) {
+#16 36.95                                                               ^
+#16 36.95     symbol:   method getTotal()
+#16 36.95     location: variable originalSale of type Sale
+#16 36.95   /app/src/main/java/com/salepilot/backend/service/ReturnService.java:105: error: cannot find symbol
+#16 36.95               originalSale.setRefundStatus(Sale.RefundStatus.FULLY_REFUNDED);
+#16 36.95                           ^
+#16 36.95     symbol:   method setRefundStatus(RefundStatus)
+#16 36.95     location: variable originalSale of type Sale
+#16 36.95   /app/src/main/java/com/salepilot/backend/service/ReturnService.java:107: error: cannot find symbol
+#16 36.95               originalSale.setRefundStatus(Sale.RefundStatus.PARTIALLY_REFUNDED);
+#16 36.95                           ^
+#16 36.95     symbol:   method setRefundStatus(RefundStatus)
+#16 36.95     location: variable originalSale of type Sale
+#16 36.95   /app/src/main/java/com/salepilot/backend/service/ReturnService.java:112: error: cannot find symbol
+#16 36.95           if ("Store Credit".equalsIgnoreCase(request.getRefundMethod()) && originalSale.getCustomer() != null) {
+#16 36.95                                                      ^
+#16 36.95     symbol:   method getRefundMethod()
+#16 36.95     location: variable request of type ReturnRequest
+#16 36.95   /app/src/main/java/com/salepilot/backend/service/ReturnService.java:112: error: cannot find symbol
+#16 36.95           if ("Store Credit".equalsIgnoreCase(request.getRefundMethod()) && originalSale.getCustomer() != null) {
+#16 36.95                                                                                         ^
+#16 36.95     symbol:   method getCustomer()
+#16 36.95     location: variable originalSale of type Sale
+#16 36.95   /app/src/main/java/com/salepilot/backend/service/ReturnService.java:113: error: cannot find symbol
+#16 36.95               customerService.addStoreCredit(originalSale.getCustomer().getId(), request.getRefundAmount());
+#16 36.95                                                          ^
+#16 36.95     symbol:   method getCustomer()
+#16 36.95     location: variable originalSale of type Sale
+#16 36.95   /app/src/main/java/com/salepilot/backend/service/ReturnService.java:113: error: cannot find symbol
+#16 36.95               customerService.addStoreCredit(originalSale.getCustomer().getId(), request.getRefundAmount());
+#16 36.95                                                                                         ^
+#16 36.95     symbol:   method getRefundAmount()
+#16 36.95     location: variable request of type ReturnRequest
+#16 36.95   /app/src/main/java/com/salepilot/backend/service/CustomerService.java:36: error: cannot find symbol
+#16 36.95           if (customer.getEmail() != null && !customer.getEmail().isEmpty()) {
+#16 36.95                       ^
+#16 36.95     symbol:   method getEmail()
+#16 36.95     location: variable customer of type Customer
+#16 36.95   /app/src/main/java/com/salepilot/backend/service/CustomerService.java:36: error: cannot find symbol
+#16 36.95           if (customer.getEmail() != null && !customer.getEmail().isEmpty()) {
+#16 36.95                                                       ^
+#16 36.95     symbol:   method getEmail()
+#16 36.95     location: variable customer of type Customer
+#16 36.95   /app/src/main/java/com/salepilot/backend/service/CustomerService.java:37: error: cannot find symbol
+#16 36.95               Optional<Customer> existing = customerRepository.findByStoreIdAndEmail(storeId, customer.getEmail());
+#16 36.95                                                                                                       ^
+#16 36.95     symbol:   method getEmail()
+#16 36.95     location: variable customer of type Customer
+#16 36.95   /app/src/main/java/com/salepilot/backend/service/CustomerService.java:39: error: cannot find symbol
+#16 36.95                   throw new ConflictException("Customer with email '" + customer.getEmail() + "' already exists");
+#16 36.95                                                                                 ^
+#16 36.95     symbol:   method getEmail()
+#16 36.95     location: variable customer of type Customer
+#16 36.95   /app/src/main/java/com/salepilot/backend/repository/MiscRepositories.java:19: error: duplicate class: com.salepilot.backend.repository.PaymentRepository
+#16 36.95   interface PaymentRepository extends JpaRepository<Payment, Long> {
+#16 36.95   ^
+#16 36.95   /app/src/main/java/com/salepilot/backend/repository/MiscRepositories.java:31: error: duplicate class: com.salepilot.backend.repository.StockTakeRepository
+#16 36.95   interface StockTakeRepository extends JpaRepository<StockTake, Long> {
+#16 36.95   ^
+#16 36.95   /app/src/main/java/com/salepilot/backend/repository/ReturnRepository.java:15: error: duplicate class: com.salepilot.backend.repository.ReturnRepository
+#16 36.95   public interface ReturnRepository extends JpaRepository<Return, Long> {
+#16 36.95          ^
+#16 36.95   /app/src/main/java/com/salepilot/backend/repository/OfferRepository.java:17: error: duplicate class: com.salepilot.backend.repository.OfferRepository
+#16 36.95   public interface OfferRepository extends JpaRepository<Offer, Long> {
+#16 36.95          ^
+#16 36.95   /app/src/main/java/com/salepilot/backend/dto/ProductRequest.java:40: error: duplicate class: com.salepilot.backend.dto.ProductResponse
+#16 36.95   class ProductResponse {
+#16 36.95   ^
+#16 36.95   100 errors
+#16 36.95 
+#16 36.95 * Try:
+#16 36.95 > Check your code and dependencies to fix the compilation error(s)
+#16 36.95 > Run with --scan to get full insights from a Build Scan (powered by Develocity).
+#16 36.95 
+#16 36.95 BUILD FAILED in 36s
+#16 36.95 1 actionable task: 1 executed
+#16 ERROR: process "/bin/sh -c gradle bootJar --no-daemon -x test" did not complete successfully: exit code: 1
+------
+ > [build 7/7] RUN gradle bootJar --no-daemon -x test:
+36.95   class ProductResponse {
+36.95   ^
+36.95   100 errors
+36.95 
+36.95 * Try:
+36.95 > Check your code and dependencies to fix the compilation error(s)
+36.95 > Run with --scan to get full insights from a Build Scan (powered by Develocity).
+36.95 
+36.95 BUILD FAILED in 36s
+36.95 1 actionable task: 1 executed
+------
+Dockerfile:18
+
+--------------------
+
+  16 |     
+
+  17 |     # Build application
+
+  18 | >>> RUN gradle bootJar --no-daemon -x test
+
+  19 |     
+
+  20 |     # Stage 2: Runtime
+
+--------------------
+
+failed to solve: process "/bin/sh -c gradle bootJar --no-daemon -x test" did not complete successfully: exit code: 1
+

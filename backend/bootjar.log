@@ -1,0 +1,5 @@
+﻿> Task :compileJava UP-TO-DATE
+> Task :processResources
+> Task :classes
+> Task :resolveMainClassName FAILED
+3 actionable tasks: 2 executed, 1 up-to-date

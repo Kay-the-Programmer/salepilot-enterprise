@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.time.Instant;
 
 /**
  * Customer entity for managing customer information, store credit, and A/R
@@ -37,9 +36,6 @@ public class Customer extends TenantAware {
     @Column(name = "notes", columnDefinition = "text")
     private String notes;
 
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private Instant createdAt;
-
     @Column(name = "store_credit", nullable = false, precision = 10, scale = 2)
     @Builder.Default
     private BigDecimal storeCredit = BigDecimal.ZERO;
@@ -47,11 +43,6 @@ public class Customer extends TenantAware {
     @Column(name = "account_balance", nullable = false, precision = 10, scale = 2)
     @Builder.Default
     private BigDecimal accountBalance = BigDecimal.ZERO; // A/R balance (negative = customer owes)
-
-    @PrePersist
-    protected void onCreate() {
-        createdAt = Instant.now();
-    }
 
     /**
      * Check if customer has outstanding balance

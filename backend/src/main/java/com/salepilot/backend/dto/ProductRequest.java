@@ -32,25 +32,3 @@ public class ProductRequest {
     private String dimensions;
     private Integer safetyStock;
 }
-
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-class ProductResponse {
-    private Long id;
-    private String name;
-    private String description;
-    private String sku;
-    private String barcode;
-    private String categoryName;
-    private String supplierName;
-    private BigDecimal price;
-    private BigDecimal costPrice;
-    private BigDecimal stock;
-    private String unitOfMeasure;
-    private String[] imageUrls;
-    private String status;
-    private boolean lowStock;
-    private BigDecimal profitMargin;
-}

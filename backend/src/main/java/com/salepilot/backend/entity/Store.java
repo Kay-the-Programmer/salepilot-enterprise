@@ -3,8 +3,6 @@ package com.salepilot.backend.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.Instant;
-
 /**
  * Store entity representing individual tenants in the multi-tenant system.
  * Each store represents a separate business using the SalePilot platform.
@@ -35,7 +33,7 @@ public class Store extends BaseEntity {
     private SubscriptionStatus subscriptionStatus = SubscriptionStatus.TRIAL;
 
     @Column(name = "subscription_ends_at")
-    private Instant subscriptionEndsAt;
+    private java.time.LocalDateTime subscriptionEndsAt;
 
     @Column(name = "is_verified")
     @Builder.Default
@@ -43,23 +41,6 @@ public class Store extends BaseEntity {
 
     @Column(name = "verification_documents", columnDefinition = "jsonb")
     private String verificationDocuments; // JSON array of document objects
-
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private Instant createdAt;
-
-    @Column(name = "updated_at", nullable = false)
-    private Instant updatedAt;
-
-    @PrePersist
-    protected void onCreate() {
-        createdAt = Instant.now();
-        updatedAt = Instant.now();
-    }
-
-    @PreUpdate
-    protected void onUpdate() {
-        updatedAt = Instant.now();
-    }
 
     /**
      * Store status enumeration

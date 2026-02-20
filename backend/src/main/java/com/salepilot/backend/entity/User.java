@@ -73,6 +73,10 @@ public class User extends BaseEntity {
     @Column(name = "current_store_id")
     private String currentStoreId; // Current selected store for this user
 
+    public String getStoreId() {
+        return currentStoreId;
+    }
+
     // Email verification
     @Column(name = "is_verified")
     @Builder.Default
@@ -87,6 +91,11 @@ public class User extends BaseEntity {
 
     @Column(name = "reset_password_expires")
     private java.time.Instant resetPasswordExpires;
+
+    // Onboarding state
+    @Column(name = "onboarding_state", columnDefinition = "jsonb")
+    private String onboardingState; // JSONB field storing
+                                    // {"completedActions":[],"dismissedHelpers":[],"lastUpdated":null}
 
     /**
      * Get full name of the user

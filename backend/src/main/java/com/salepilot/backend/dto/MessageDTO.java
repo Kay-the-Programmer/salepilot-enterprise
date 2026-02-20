@@ -7,7 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 /**
  * DTO for sending and viewing messages
@@ -30,7 +30,7 @@ public class MessageDTO {
     private String content;
 
     private Boolean isRead;
-    private Instant createdAt;
+    private LocalDateTime createdAt;
 
     private String relatedEntityType;
     private String relatedEntityId;

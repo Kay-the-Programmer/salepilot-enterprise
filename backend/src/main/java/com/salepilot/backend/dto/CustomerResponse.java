@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.time.Instant;
 
 /**
  * Response DTO for customer data
@@ -29,7 +28,7 @@ public class CustomerResponse {
 
     private String notes;
 
-    private Instant createdAt;
+    private java.time.LocalDateTime createdAt;
 
     private BigDecimal storeCredit;
 

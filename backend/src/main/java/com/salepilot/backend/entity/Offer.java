@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.time.Instant;
 
 /**
  * Offer entity for location-based marketplace features.
@@ -49,14 +48,6 @@ public class Offer extends TenantAware {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "accepted_by")
     private User acceptedBy; // User who accepted the offer
-
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private Instant createdAt;
-
-    @PrePersist
-    protected void onCreate() {
-        createdAt = Instant.now();
-    }
 
     /**
      * Offer status enumeration

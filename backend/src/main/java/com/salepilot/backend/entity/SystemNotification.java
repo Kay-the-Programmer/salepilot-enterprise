@@ -3,8 +3,6 @@ package com.salepilot.backend.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.Instant;
-
 /**
  * System Notification entity for system-wide announcements (not tenant-scoped).
  */
@@ -25,15 +23,8 @@ public class SystemNotification extends BaseEntity {
     @Column(name = "message", nullable = false, columnDefinition = "text")
     private String message;
 
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private Instant createdAt;
-
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "created_by", nullable = false)
-    private User createdBy; // Admin/superadmin who created it
+    @JoinColumn(name = "created_by", insertable = false, updatable = false)
+    private User creator; // Admin/superadmin who created it (Read-only view)
 
-    @PrePersist
-    protected void onCreate() {
-        createdAt = Instant.now();
-    }
 }

@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 /**
  * DTO for Notification
@@ -22,5 +22,5 @@ public class NotificationDTO {
     private Notification.NotificationType type;
     private Boolean isRead;
     private String link;
-    private Instant createdAt;
+    private LocalDateTime createdAt;
 }

@@ -13,11 +13,6 @@ import java.util.Optional;
 public interface StoreRepository extends JpaRepository<Store, Long> {
 
     /**
-     * Find store by ID (string format)
-     */
-    Optional<Store> findByIdString(String id);
-
-    /**
      * Find all active stores
      */
     java.util.List<Store> findByStatus(Store.StoreStatus status);

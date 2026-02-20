@@ -52,7 +52,8 @@ public class OnlineShopController {
     @GetMapping("/products/{id}")
     @Operation(summary = "Get product details")
     public ResponseEntity<ProductResponse> getProduct(@PathVariable Long id) {
-        Product product = productService.getProductById(id);
+        Product product = productService.getProductById(id)
+                .orElseThrow(() -> new com.salepilot.backend.exception.NotFoundException("Product not found"));
         return ResponseEntity.ok(mapToProductResponse(product));
     }
 
@@ -77,7 +78,9 @@ public class OnlineShopController {
                 .price(product.getPrice())
                 .stock(product.getStock())
                 .categoryName(product.getCategory() != null ? product.getCategory().getName() : null)
-                .imageUrl(product.getImageUrl())
+                .imageUrl(
+                        product.getImageUrls() != null && product.getImageUrls().length > 0 ? product.getImageUrls()[0]
+                                : null)
                 // .description() if available
                 .build();
     }

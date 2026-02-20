@@ -1,0 +1,184 @@
+﻿
+> Task :compileJava
+./gradlew : C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java
+\com\salepilot\backend\config\SecurityConfig.java:103: error: constructor 
+DaoAuthenticationProvider in class DaoAuthenticationProvider cannot be applied 
+to given types;
+At line:1 char:1
++ ./gradlew compileJava 2>&1 | Out-File -Encoding utf8 compile_errors.l ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:\Users\omen\D...to given types;: 
+   String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+                                             ^
+  required: UserDetailsService
+  found:    no arguments
+  reason: actual and formal argument lists differ in length
+C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java\com\salepil
+ot\backend\config\SecurityConfig.java:104: error: cannot find symbol
+        provider.setUserDetailsService(userDetailsService);
+                ^
+  symbol:   method setUserDetailsService(UserDetailsService)
+  location: variable provider of type DaoAuthenticationProvider
+C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java\com\salepil
+ot\backend\controller\CustomerController.java:150: error: cannot find symbol
+                .storeCredit(customer.getStoreCredit())
+                                     ^
+  symbol:   method getStoreCredit()
+  location: variable customer of type Customer
+C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java\com\salepil
+ot\backend\service\CustomerService.java:44: error: cannot find symbol
+        if (customer.getStoreCredit() == null) {
+                    ^
+  symbol:   method getStoreCredit()
+  location: variable customer of type Customer
+C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java\com\salepil
+ot\backend\service\CustomerService.java:45: error: cannot find symbol
+            customer.setStoreCredit(BigDecimal.ZERO);
+                    ^
+  symbol:   method setStoreCredit(BigDecimal)
+  location: variable customer of type Customer
+C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java\com\salepil
+ot\backend\service\CustomerService.java:154: error: cannot find symbol
+        customer.setStoreCredit(customer.getStoreCredit().add(amount));
+                                        ^
+  symbol:   method getStoreCredit()
+  location: variable customer of type Customer
+C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java\com\salepil
+ot\backend\service\CustomerService.java:177: error: cannot find symbol
+        if (customer.getStoreCredit().compareTo(amount) < 0) {
+                    ^
+  symbol:   method getStoreCredit()
+  location: variable customer of type Customer
+C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java\com\salepil
+ot\backend\service\CustomerService.java:178: error: cannot find symbol
+            throw new IllegalArgumentException("Insufficient store credit. 
+Available: " + customer.getStoreCredit());
+                                                                                
+                  ^
+  symbol:   method getStoreCredit()
+  location: variable customer of type Customer
+C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java\com\salepil
+ot\backend\service\CustomerService.java:181: error: cannot find symbol
+        customer.setStoreCredit(customer.getStoreCredit().subtract(amount));
+                                        ^
+  symbol:   method getStoreCredit()
+  location: variable customer of type Customer
+C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java\com\salepil
+ot\backend\service\CustomerService.java:226: error: cannot find symbol
+        if (customer.getStoreCredit().compareTo(BigDecimal.ZERO) > 0) {
+                    ^
+  symbol:   method getStoreCredit()
+  location: variable customer of type Customer
+C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java\com\salepil
+ot\backend\service\CustomerService.java:228: error: cannot find symbol
+                    customer.getStoreCredit());
+                            ^
+  symbol:   method getStoreCredit()
+  location: variable customer of type Customer
+C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java\com\salepil
+ot\backend\service\SubscriptionService.java:54: error: incompatible types: 
+Instant cannot be converted to LocalDateTime
+        store.setSubscriptionEndsAt(Instant.now().plus(30, ChronoUnit.DAYS));
+                                                      ^
+Note: Some messages have been simplified; recompile with -Xdiags:verbose to get 
+full output
+12 errors
+
+> Task :compileJava FAILED
+
+[Incubating] Problems report is available at: file:///C:/Users/omen/Downloads/salepilot/java-backend/backend/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileJava'.
+> Compilation failed; see the compiler output below.
+  C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java\com\salep
+ilot\backend\config\SecurityConfig.java:103: error: constructor 
+DaoAuthenticationProvider in class DaoAuthenticationProvider cannot be applied 
+to given types;
+          DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+                                               ^
+    required: UserDetailsService
+    found:    no arguments
+    reason: actual and formal argument lists differ in length
+  C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java\com\salep
+ilot\backend\service\SubscriptionService.java:54: error: incompatible types: 
+Instant cannot be converted to LocalDateTime
+          store.setSubscriptionEndsAt(Instant.now().plus(30, ChronoUnit.DAYS));
+                                                        ^
+  Note: Some messages have been simplified; recompile with -Xdiags:verbose to 
+get full output
+  C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java\com\salep
+ilot\backend\config\SecurityConfig.java:104: error: cannot find symbol
+          provider.setUserDetailsService(userDetailsService);
+                  ^
+    symbol:   method setUserDetailsService(UserDetailsService)
+    location: variable provider of type DaoAuthenticationProvider
+  C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java\com\salep
+ilot\backend\controller\CustomerController.java:150: error: cannot find symbol
+                  .storeCredit(customer.getStoreCredit())
+                                       ^
+    symbol:   method getStoreCredit()
+    location: variable customer of type Customer
+  C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java\com\salep
+ilot\backend\service\CustomerService.java:44: error: cannot find symbol
+          if (customer.getStoreCredit() == null) {
+                      ^
+    symbol:   method getStoreCredit()
+    location: variable customer of type Customer
+  C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java\com\salep
+ilot\backend\service\CustomerService.java:45: error: cannot find symbol
+              customer.setStoreCredit(BigDecimal.ZERO);
+                      ^
+    symbol:   method setStoreCredit(BigDecimal)
+    location: variable customer of type Customer
+  C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java\com\salep
+ilot\backend\service\CustomerService.java:154: error: cannot find symbol
+          customer.setStoreCredit(customer.getStoreCredit().add(amount));
+                                          ^
+    symbol:   method getStoreCredit()
+    location: variable customer of type Customer
+  C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java\com\salep
+ilot\backend\service\CustomerService.java:177: error: cannot find symbol
+          if (customer.getStoreCredit().compareTo(amount) < 0) {
+                      ^
+    symbol:   method getStoreCredit()
+    location: variable customer of type Customer
+  C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java\com\salep
+ilot\backend\service\CustomerService.java:178: error: cannot find symbol
+              throw new IllegalArgumentException("Insufficient store credit. 
+Available: " + customer.getStoreCredit());
+                                                                                
+                    ^
+    symbol:   method getStoreCredit()
+    location: variable customer of type Customer
+  C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java\com\salep
+ilot\backend\service\CustomerService.java:181: error: cannot find symbol
+          customer.setStoreCredit(customer.getStoreCredit().subtract(amount));
+                                          ^
+    symbol:   method getStoreCredit()
+    location: variable customer of type Customer
+  C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java\com\salep
+ilot\backend\service\CustomerService.java:226: error: cannot find symbol
+          if (customer.getStoreCredit().compareTo(BigDecimal.ZERO) > 0) {
+                      ^
+    symbol:   method getStoreCredit()
+    location: variable customer of type Customer
+  C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java\com\salep
+ilot\backend\service\CustomerService.java:228: error: cannot find symbol
+                      customer.getStoreCredit());
+                              ^
+    symbol:   method getStoreCredit()
+    location: variable customer of type Customer
+  12 errors
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to generate a Build Scan (powered by Develocity).
+
+BUILD FAILED in 10s
+1 actionable task: 1 executed

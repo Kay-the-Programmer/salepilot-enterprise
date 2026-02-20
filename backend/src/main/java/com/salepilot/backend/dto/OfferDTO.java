@@ -11,7 +11,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.time.Instant;
 
 /**
  * DTO for Offer interactions
@@ -42,7 +41,7 @@ public class OfferDTO {
     private BigDecimal longitude;
 
     private Offer.OfferStatus status;
-    private Instant createdAt;
+    private java.time.LocalDateTime createdAt;
 
     // For acceptance
     private String acceptedByUserId;

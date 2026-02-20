@@ -7,6 +7,7 @@ import com.salepilot.backend.dto.request.RegisterRequest;
 import com.salepilot.backend.dto.response.ApiResponse;
 import com.salepilot.backend.dto.response.AuthResponse;
 import com.salepilot.backend.service.AuthService;
+import com.salepilot.backend.service.VerificationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -30,6 +31,7 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     private final AuthService authService;
+    private final VerificationService verificationService;
 
     @Operation(summary = "Register a new user", description = "Create a new user account")
     @ApiResponses(value = {
@@ -87,5 +89,57 @@ public class AuthController {
         authService.logout(token);
 
         return ResponseEntity.ok(ApiResponse.success("Logout successful", null));
+    }
+
+    @Operation(summary = "Verify email", description = "Verify user email with token")
+    @PostMapping("/verify-email")
+    public ResponseEntity<ApiResponse<Void>> verifyEmail(@RequestParam("token") String token) {
+        log.info("POST /auth/verify-email - Verifying email");
+
+        boolean verified = verificationService.verifyEmail(token);
+
+        if (verified) {
+            return ResponseEntity.ok(ApiResponse.success("Email verified successfully", null));
+        } else {
+            return ResponseEntity.badRequest()
+                    .body(ApiResponse.error("Invalid or expired verification token"));
+        }
+    }
+
+    @Operation(summary = "Resend verification email", description = "Resend verification email to user")
+    @PostMapping("/resend-verification")
+    public ResponseEntity<ApiResponse<Void>> resendVerification(@RequestParam("email") String email) {
+        log.info("POST /auth/resend-verification - Resending verification email to: {}", email);
+
+        verificationService.resendVerificationEmail(email);
+
+        return ResponseEntity.ok(ApiResponse.success("Verification email sent", null));
+    }
+
+    @Operation(summary = "Forgot password", description = "Initiate password reset process")
+    @PostMapping("/forgot-password")
+    public ResponseEntity<ApiResponse<Void>> forgotPassword(@RequestParam("email") String email) {
+        log.info("POST /auth/forgot-password - Password reset requested for: {}", email);
+
+        verificationService.initiatePasswordReset(email);
+
+        return ResponseEntity.ok(ApiResponse.success("Password reset email sent", null));
+    }
+
+    @Operation(summary = "Reset password", description = "Reset password using reset token")
+    @PostMapping("/reset-password")
+    public ResponseEntity<ApiResponse<Void>> resetPassword(
+            @RequestParam("token") String token,
+            @RequestParam("password") String newPassword) {
+        log.info("POST /auth/reset-password - Resetting password");
+
+        boolean reset = verificationService.resetPassword(token, newPassword);
+
+        if (reset) {
+            return ResponseEntity.ok(ApiResponse.success("Password reset successfully", null));
+        } else {
+            return ResponseEntity.badRequest()
+                    .body(ApiResponse.error("Invalid or expired reset token"));
+        }
     }
 }

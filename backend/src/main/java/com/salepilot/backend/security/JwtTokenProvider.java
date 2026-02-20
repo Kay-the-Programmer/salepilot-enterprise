@@ -61,6 +61,7 @@ public class JwtTokenProvider {
                 .claim("username", userPrincipal.getUsername())
                 .claim("email", userPrincipal.getEmail())
                 .claim("roles", authorities)
+                .claim("currentStoreId", userPrincipal.getCurrentStoreId()) // Add store ID for multi-tenancy
                 .issuedAt(now)
                 .expiration(expiryDate)
                 .signWith(secretKey, Jwts.SIG.HS512)
@@ -105,6 +106,14 @@ public class JwtTokenProvider {
     public String getEmailFromToken(String token) {
         Claims claims = getClaims(token);
         return claims.get("email", String.class);
+    }
+
+    /**
+     * Get current store ID from JWT token
+     */
+    public String getStoreIdFromToken(String token) {
+        Claims claims = getClaims(token);
+        return claims.get("currentStoreId", String.class);
     }
 
     /**

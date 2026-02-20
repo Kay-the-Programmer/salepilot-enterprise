@@ -3,8 +3,6 @@ package com.salepilot.backend.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.Instant;
-
 /**
  * Message entity for internal user-to-user communication.
  */
@@ -44,13 +42,4 @@ public class Message extends TenantAware {
     @Column(name = "related_entity_id")
     private String relatedEntityId;
 
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private Instant createdAt;
-
-    @PrePersist
-    protected void onCreate() {
-        if (createdAt == null) {
-            createdAt = Instant.now();
-        }
-    }
 }

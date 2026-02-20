@@ -1,0 +1,44 @@
+> Task :clean
+
+> Task :compileJava
+C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java\com\salepilot\backend\service\EmailService.java:98: error: Alternatives in a multi-catch statement cannot be related by subclassing
+        } catch (MessagingException | jakarta.mail.internet.AddressException e) {
+                                                           ^
+  Alternative AddressException is a subclass of alternative MessagingException
+C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java\com\salepilot\backend\controller\SetupController.java:44: error: cannot find symbol
+        verificationService.submitDocument(request.getUrl(), request.getType());
+                           ^
+  symbol:   method submitDocument(String,String)
+  location: variable verificationService of type VerificationService
+Note: C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java\com\salepilot\backend\filter\TenantFilter.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+2 errors
+
+> Task :compileJava FAILED
+
+[Incubating] Problems report is available at: file:///C:/Users/omen/Downloads/salepilot/java-backend/backend/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileJava'.
+> Compilation failed; see the compiler output below.
+  Note: C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java\com\salepilot\backend\filter\TenantFilter.java uses or overrides a deprecated API.
+  C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java\com\salepilot\backend\service\EmailService.java:98: error: Alternatives in a multi-catch statement cannot be related by subclassing
+          } catch (MessagingException | jakarta.mail.internet.AddressException e) {
+                                                             ^
+    Alternative AddressException is a subclass of alternative MessagingException
+  Note: Recompile with -Xlint:deprecation for details.
+  C:\Users\omen\Downloads\salepilot\java-backend\backend\src\main\java\com\salepilot\backend\controller\SetupController.java:44: error: cannot find symbol
+          verificationService.submitDocument(request.getUrl(), request.getType());
+                             ^
+    symbol:   method submitDocument(String,String)
+    location: variable verificationService of type VerificationService
+  2 errors
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to generate a Build Scan (powered by Develocity).
+
+BUILD FAILED in 24s
+2 actionable tasks: 2 executed

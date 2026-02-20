@@ -1,0 +1,117 @@
+﻿docker-compose : time="2026-01-25T22:38:16+02:00" level=warning 
+msg="C:\\Users\\omen\\Downloads\\salepilot\\java-backend\\backend\\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, 
+please remove it to avoid potential confusion"
+At line:1 char:1
++ docker-compose up -d --build > build.log 2>&1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (time="2026-01-2...tial confusion":String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+#1 [internal] load local bake definitions
+#1 reading from stdin 578B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 1.30kB 0.0s done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/eclipse-temurin:17-jre-alpine
+#3 DONE 2.3s
+
+#4 [internal] load metadata for docker.io/library/gradle:8.5-jdk17-alpine
+#4 DONE 5.5s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 2B 0.0s done
+#5 DONE 0.1s
+
+#6 [internal] load build context
+#6 DONE 0.0s
+
+#7 [build 1/7] FROM docker.io/library/gradle:8.5-jdk17-alpine@sha256:e4f3af5b65fb20115bb8d2054fea4d37e0389aa003735ca6d7b035c9c0d9fb70
+#7 resolve docker.io/library/gradle:8.5-jdk17-alpine@sha256:e4f3af5b65fb20115bb8d2054fea4d37e0389aa003735ca6d7b035c9c0d9fb70
+#7 resolve docker.io/library/gradle:8.5-jdk17-alpine@sha256:e4f3af5b65fb20115bb8d2054fea4d37e0389aa003735ca6d7b035c9c0d9fb70 0.2s done
+#7 DONE 0.2s
+
+#8 [stage-1 1/5] FROM docker.io/library/eclipse-temurin:17-jre-alpine@sha256:f57e47e7a78ae1ff5019681d95a4964153b0d1078bdff2a2f288e4a5ee329c14
+#8 resolve docker.io/library/eclipse-temurin:17-jre-alpine@sha256:f57e47e7a78ae1ff5019681d95a4964153b0d1078bdff2a2f288e4a5ee329c14 0.2s done
+#8 DONE 0.3s
+
+#9 [stage-1 2/5] RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+#9 CACHED
+
+#10 [stage-1 3/5] WORKDIR /app
+#10 CACHED
+
+#6 [internal] load build context
+#6 transferring context: 18.68kB 0.1s done
+#6 DONE 0.2s
+
+#11 [build 2/7] WORKDIR /app
+#11 CACHED
+
+#12 [build 3/7] COPY build.gradle settings.gradle ./
+#12 CACHED
+
+#13 [build 4/7] COPY gradle ./gradle
+#13 CACHED
+
+#14 [build 5/7] RUN gradle dependencies --no-daemon || return 0
+#14 CACHED
+
+#15 [build 6/7] COPY src ./src
+#15 CACHED
+
+#16 [build 7/7] RUN gradle bootJar --no-daemon -x test
+#16 2.446 To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.5/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+#16 4.642 Daemon will be stopped at the end of the build 
+#16 11.84 
+#16 11.84 FAILURE: Build failed with an exception.
+#16 11.84 
+#16 11.84 * Where:
+#16 11.84 Build file '/app/build.gradle' line: 3
+#16 11.84 
+#16 11.84 * What went wrong:
+#16 11.84 An exception occurred applying plugin request [id: 'org.springframework.boot', version: '4.0.1']
+#16 11.84 > Failed to apply plugin 'org.springframework.boot'.
+#16 11.84    > Spring Boot plugin requires Gradle 8.x (8.14 or later) or 9.x. The current version is Gradle 8.5
+#16 11.84 
+#16 11.84 * Try:
+#16 11.84 > Run with --stacktrace option to get the stack trace.
+#16 11.85 > Run with --info or --debug option to get more log output.
+#16 11.85 > Run with --scan to get full insights.
+#16 11.85 > Get more help at https://help.gradle.org.
+#16 11.85 
+#16 11.85 BUILD FAILED in 11s
+#16 ERROR: process "/bin/sh -c gradle bootJar --no-daemon -x test" did not complete successfully: exit code: 1
+------
+ > [build 7/7] RUN gradle bootJar --no-daemon -x test:
+11.84 > Failed to apply plugin 'org.springframework.boot'.
+11.84    > Spring Boot plugin requires Gradle 8.x (8.14 or later) or 9.x. The current version is Gradle 8.5
+11.84 
+11.84 * Try:
+11.84 > Run with --stacktrace option to get the stack trace.
+11.85 > Run with --info or --debug option to get more log output.
+11.85 > Run with --scan to get full insights.
+11.85 > Get more help at https://help.gradle.org.
+11.85 
+11.85 BUILD FAILED in 11s
+------
+Dockerfile:18
+
+--------------------
+
+  16 |     
+
+  17 |     # Build application
+
+  18 | >>> RUN gradle bootJar --no-daemon -x test
+
+  19 |     
+
+  20 |     # Stage 2: Runtime
+
+--------------------
+
+failed to solve: process "/bin/sh -c gradle bootJar --no-daemon -x test" did not complete successfully: exit code: 1
+

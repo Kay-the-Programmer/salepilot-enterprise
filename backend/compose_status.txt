@@ -1,0 +1,4 @@
+﻿NAME                 IMAGE                   COMMAND                  SERVICE    CREATED          STATUS                          PORTS
+salepilot-backend    backend-backend         "java -XX:+UseContaiΓÇª"   backend    7 minutes ago    Restarting (1) 26 seconds ago   
+salepilot-pgadmin    dpage/pgadmin4:latest   "/entrypoint.sh"         pgadmin    24 minutes ago   Up 24 minutes                   0.0.0.0:5050->80/tcp, [::]:5050->80/tcp
+salepilot-postgres   postgres:16-alpine      "docker-entrypoint.sΓÇª"   postgres   24 minutes ago   Up 24 minutes (healthy)         0.0.0.0:5432->5432/tcp, [::]:5432->5432/tcp

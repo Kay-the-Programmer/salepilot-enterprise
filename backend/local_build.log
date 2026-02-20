@@ -1,0 +1,8 @@
+﻿> Task :clean
+
+> Task :compileJava
+
+> Task :compileJava FAILED
+
+[Incubating] Problems report is available at: file:///C:/Users/omen/Downloads/salepilot/java-backend/backend/build/reports/problems/problems-report.html
+2 actionable tasks: 2 executed

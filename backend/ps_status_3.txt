@@ -1,0 +1,4 @@
+﻿CONTAINER ID   IMAGE                   COMMAND                  CREATED          STATUS                             PORTS                                         NAMES
+d299899abe98   backend-backend         "java -XX:+UseContaiΓÇª"   44 seconds ago   Up 14 seconds (health: starting)   0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp   salepilot-backend
+ddbf8e7e8569   dpage/pgadmin4:latest   "/entrypoint.sh"         9 minutes ago    Up 9 minutes                       0.0.0.0:5050->80/tcp, [::]:5050->80/tcp       salepilot-pgadmin
+ce53b44067a8   postgres:16-alpine      "docker-entrypoint.sΓÇª"   9 minutes ago    Up 9 minutes (healthy)             0.0.0.0:5432->5432/tcp, [::]:5432->5432/tcp   salepilot-postgres
